@@ -1,0 +1,52 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ms-otp
+  labels:
+    app: ms-otp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ms-otp
+  template:
+    metadata:
+      labels:
+        app: ms-otp
+    spec:
+      containers:
+      - name: ms-otp
+        image: meznger/ms-otp:latest
+        ports:
+        - containerPort: 3000
+        env:
+        - name: TWILIO_SID
+          valueFrom:
+            secretKeyRef:
+              name: twilio
+              key: sid
+        - name: TWILIO_AUTH_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: twilio
+              key: authToken
+        - name: TWILIO_PHONE_NUMBER
+          valueFrom:
+            secretKeyRef:
+              name: twilio
+              key: phoneNumber
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: ms-otp
+spec:
+  selector:
+    app: ms-otp
+  type: ClusterIP
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 3000
