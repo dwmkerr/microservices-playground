@@ -20,3 +20,4 @@ kubectl create secret generic twilio \
 
 # Create the Kubernetes objects.
 kubectl create -f deployment.yaml
+kubectl create -f service.yaml

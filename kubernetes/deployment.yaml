@@ -1,4 +1,3 @@
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -36,17 +35,3 @@ spec:
             secretKeyRef:
               name: twilio
               key: phoneNumber
-
----
-kind: Service
-apiVersion: v1
-metadata:
-  name: ms-otp
-spec:
-  selector:
-    app: ms-otp
-  type: ClusterIP
-  ports:
-  - protocol: TCP
-    port: 80
-    targetPort: 3000

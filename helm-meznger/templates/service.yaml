@@ -1,19 +1,19 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "helm-meznger.fullname" . }}
+  name: {{ .Values.ms_otp.name }}
   labels:
-    app: {{ include "helm-meznger.name" . }}
+    app: {{ .Values.ms_otp.name }}
     chart: {{ include "helm-meznger.chart" . }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
 spec:
-  type: {{ .Values.service.type }}
+  type: {{ .Values.ms_otp.service.type }}
   ports:
-    - port: {{ .Values.service.port }}
-      targetPort: http
+    - port: {{ .Values.ms_otp.service.port }}
+      targetPort: {{ .Values.ms_otp.containerPort }}
       protocol: TCP
       name: http
   selector:
-    app: {{ include "helm-meznger.name" . }}
+    app: {{ .Values.ms_otp.name }}
     release: {{ .Release.Name }}

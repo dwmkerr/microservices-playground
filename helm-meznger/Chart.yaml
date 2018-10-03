@@ -3,3 +3,6 @@ appVersion: "0.1.0"
 description: A Helm Chart for the meznger platform
 name: helm-meznger
 version: 0.1.0
+
+# We use deployments from app/v1, so require Kubernetes 1.9 onwards.
+kubeVersion: ">=1.9"

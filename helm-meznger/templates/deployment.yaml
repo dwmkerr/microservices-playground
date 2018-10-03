@@ -1,51 +1,46 @@
-apiVersion: apps/v1beta2
+apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "helm-meznger.fullname" . }}
+  name: {{ .Values.ms_otp.name }}
   labels:
-    app: {{ include "helm-meznger.name" . }}
+    app: {{ .Values.ms_otp.name }}
     chart: {{ include "helm-meznger.chart" . }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
 spec:
-  replicas: {{ .Values.replicaCount }}
+  replicas: {{ .Values.ms_otp.replicaCount }}
   selector:
     matchLabels:
-      app: {{ include "helm-meznger.name" . }}
+      app: {{ .Values.ms_otp.name }}
       release: {{ .Release.Name }}
   template:
     metadata:
       labels:
-        app: {{ include "helm-meznger.name" . }}
+        app: {{ .Values.ms_otp.name }}
         release: {{ .Release.Name }}
     spec:
       containers:
-        - name: {{ .Chart.Name }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
+
+        - name: {{ .Values.ms_otp.name }}
+          image: "{{ .Values.ms_otp.image.repository }}:{{ .Values.ms_otp.image.tag }}"
+          imagePullPolicy: {{ .Values.ms_otp.image.pullPolicy }}
           ports:
             - name: http
-              containerPort: 3000
+              containerPort: {{ .Values.ms_otp.containerPort }}
               protocol: TCP
-          livenessProbe:
-            httpGet:
-              path: /
-              port: http
-          readinessProbe:
-            httpGet:
-              path: /
-              port: http
-          resources:
-{{ toYaml .Values.resources | indent 12 }}
-    {{- with .Values.nodeSelector }}
-      nodeSelector:
-{{ toYaml . | indent 8 }}
-    {{- end }}
-    {{- with .Values.affinity }}
-      affinity:
-{{ toYaml . | indent 8 }}
-    {{- end }}
-    {{- with .Values.tolerations }}
-      tolerations:
-{{ toYaml . | indent 8 }}
-    {{- end }}
+          env:
+          - name: TWILIO_SID
+            valueFrom:
+              secretKeyRef:
+                name: twilio
+                key: sid
+          - name: TWILIO_AUTH_TOKEN
+            valueFrom:
+              secretKeyRef:
+                name: twilio
+                key: authToken
+          - name: TWILIO_PHONE_NUMBER
+            valueFrom:
+              secretKeyRef:
+                name: twilio
+                key: phoneNumber
