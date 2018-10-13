@@ -1,5 +1,7 @@
 # microservices-meznger
 
+[![GuardRails badge](https://badges.production.guardrails.io/dwmkerr/microservices-meznger.svg)](https://www.guardrails.io)
+
 A simple messaging platform built with microservices. Perfect for testing out microservice technology like Kubernetes, Helm, Istio, etc.
 
 ## Kubernetes
