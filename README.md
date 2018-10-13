@@ -41,3 +41,4 @@ helm install \
 - [] ms-otp: If there are no Twilio credentials, should not send messages. We would have a static page which renders sent OTPs for the purpose of demoing.
 - [ ] The helm chart will not restart services if the secrets change. We could make the secret name contain the release name, or sha values or something to force a restart, but not super urgent right now.
 - [ ] The need for lots of env vars is a pain, as we cannot tell Helm to use the local env by preference.
+- [ ] Consider renaming to microservices-playground
