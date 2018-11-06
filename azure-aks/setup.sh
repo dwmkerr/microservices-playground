@@ -30,3 +30,9 @@ az aks get-credentials \
     --resource-group ${resource_group_name} \
     --name ${cluster_name}
 
+# Create the service account for tiller.
+kubectl apply -f ./helm/helm-rbac.yaml
+
+# Initialise Helm, using the appropriate account for Tiller.
+helm init --service-account tiller --wait
+
