@@ -1,5 +1,7 @@
 # ☁️🐳 microservices-playground
 
+(Note: I'm currently merging multiple projects into this one, it might be a bit messy for a while, please be patient while I consolidate! Note what you'd like to see in the issues).
+
 This project lets you spin up microservice platforms on the cloud in seconds. You can use it to evaluate the differences between different platforms.
 
 The software is a simple messaging platform built with microservices. Perfect for testing out microservice technology like Kubernetes, Helm, Istio, etc.
