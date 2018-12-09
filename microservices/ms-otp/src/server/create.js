@@ -41,6 +41,7 @@ async function create() {
     {
       plugin: hapiSwagger,
       options: {
+        documentationPath: '/',
         info: {
           title: pack.name,
           description: pack.description,

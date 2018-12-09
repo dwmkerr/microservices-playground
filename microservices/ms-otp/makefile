@@ -5,7 +5,7 @@ GIT_SHORT_SHA = $(shell git log -1 --format="%h")
 # Registry and image details. These values can be overriden during builds to
 # change the image tag, deploy to a different registry, etc.
 DOCKER_REGISTRY ?= docker.io
-IMAGE_NAMESPACE ?= meznger
+IMAGE_NAMESPACE ?= microservicesplayground
 IMAGE_NAME ?= $(shell basename `pwd`)
 IMAGE_TAG ?= latest
 
@@ -13,6 +13,7 @@ default: test build
 
 # Lint and test.
 test:
+	npm install
 	npm run lint
 	npm run test
 

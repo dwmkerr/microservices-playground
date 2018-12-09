@@ -3,6 +3,7 @@ const create = require('./server/create');
 const { handleUnhandledRejections, handleSignals } = require('./server/handleProcessEvents');
 
 const sendOtpRoute = require('./apis/send-otp-route');
+const healthcheckRoute = require('./apis/healthcheck-route');
 
 /**
  * start - starts our server object.
@@ -19,6 +20,7 @@ async function start() {
 
     //  Add all of the routes.
     server.route(sendOtpRoute);
+    server.route(healthcheckRoute);
 
     //  Start the server, log details of where it is running.
     await server.start();
