@@ -4,3 +4,4 @@ node_modules
 
 # Generated artifacts.
 artifacts/
+.nyc_output/

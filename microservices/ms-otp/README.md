@@ -1,6 +1,6 @@
 # ms-otp
 
-One-Time-Pin Microservice. Provides APIs to send and validate SMS OTPs.
+One-Time-Pin Microservice. Provides APIs to send and validate SMS OTPs. Will integrate with [Twilio](https://twilio.com) if the appropriate environment variables are provided.
 
 <!-- vim-markdown-toc GFM -->
 
@@ -26,6 +26,8 @@ npm run debug
 npm run dev
 ```
 
+Open [`http://localhost:3000`](http://localhost:3000) to see the interactive Swagger Documentation, which you can use to hit the server APIs.
+
 ## Configuration
 
 Configure the service with the following variables:
@@ -39,6 +41,8 @@ Configure the service with the following variables:
 | `TWILIO_SID`                   | `xxx`                                                    | The Twilio Service Account ID.                               |
 | `TWILIO_AUTH_TOKEN`            | `xxx`                                                    | The Twilio Auth Token.                                       |
 | `TWILIO_PHONE_NUMBER`          | `xxx`                                                    | The Twilio Phone number.                                     |
+
+If `TWILIO_SID` is provided, the service will use the given Twilio config to actually send OTPs via SMS. If `TWILIO_SID` is *not* provided, the service will run in a test mode which outputs to standard-out only.
 
 ## Testing
 
