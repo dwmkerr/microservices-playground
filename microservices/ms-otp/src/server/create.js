@@ -16,6 +16,10 @@ async function create() {
   const server = Hapi.server({
     host: process.env.HOST || '0.0.0.0',
     port: process.env.PORT || 3000,
+    routes: {
+      //  Enable CORs - we use it for Hapi Swagger etc.
+      cors: true,
+    },
   });
 
   //  Set up a simple console log.
@@ -52,17 +56,12 @@ async function create() {
   ]);
 
   //  Get Twilio config and initialise Twilio.
-  const getRequiredEnvVar = (name) => {
-    const value = process.env[name];
-    if (!value) throw new Error(`Environment variable '${name}' is required`);
-    return value;
-  };
   await server.register({
     plugin: twilio,
     options: {
-      sid: getRequiredEnvVar('TWILIO_SID'),
-      authToken: getRequiredEnvVar('TWILIO_AUTH_TOKEN'),
-      phoneNumber: getRequiredEnvVar('TWILIO_PHONE_NUMBER'),
+      sid: process.env.TWILIO_SID,
+      authToken: process.env.TWILIO_AUTH_TOKEN,
+      phoneNumber: process.env.TWILIO_PHONE_NUMBER,
     },
   });
 
