@@ -27,10 +27,9 @@ module.exports = {
   handler: async (request) => {
     //  Send a message with twilio.
     try {
-      const message = await request.server.app.twilio.messages.create({
+      const message = await request.server.app.twilio.sendMessage({
         body: 'Your OTP is: XXXX',
         to: request.payload.phoneNumber,
-        from: process.env.TWILIO_PHONE_NUMBER, // monkey patch the client to do this.
       });
       request.log(`Successfully sent message with sid ${message.sid}`);
       return null;
