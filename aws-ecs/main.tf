@@ -5,7 +5,7 @@ provider "aws" {
 
 //  Create the ECS cluster using our module.
 module "ecs_cluster" {
-  source           = "./modules/ecs_cluster"
+  source           = "dwmkerr/ecs-cluster/aws"
   region           = "${var.region}"
   instance_size    = "t2.small"
   vpc_cidr         = "10.0.0.0/16"
