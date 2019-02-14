@@ -7,16 +7,16 @@ This project lets you spin up microservice platforms on the cloud in seconds. Yo
 The software is a simple messaging platform built with microservices. Perfect for testing out microservice technology like Kubernetes, Helm, Istio, etc.
 
 
-| Platform | Status |
-|----------|--------|
-| AWS - Kubernetes on Virtual Machines | TODO |
-| AWS - ECS | TODO |
-| AWS - Fargate | TODO |
-| AWS - EKS | TODO |
-| Azure - Kubernetes on Virtual Machines | TODO |
-| Azure - AKS | TODO |
-| GCP - Kubernetes on Virtual Machines | TODO |
-| GCP - GKE | TODO |
+| Platform                               | Status |
+|----------------------------------------|--------|
+| AWS - Kubernetes on Virtual Machines   | TODO   |
+| AWS - ECS                              | Ready!   |
+| AWS - Fargate                          | TODO   |
+| AWS - EKS                              | TODO   |
+| Azure - Kubernetes on Virtual Machines | TODO   |
+| Azure - AKS                            | TODO   |
+| GCP - Kubernetes on Virtual Machines   | TODO   |
+| GCP - GKE                              | TODO   |
 
 ## Introduction
 
